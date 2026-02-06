@@ -14,13 +14,17 @@ let signalCount = 0;
 
 // Handle Solana token addresses
 bot.on('message', async (msg) => {
-    if (msg.text && msg.text.length >= 32 && msg.text.length <= 44 && /^[A-HJ-NP-Z1-9]+$/.test(msg.text)) {
-        await handleTokenAnalysis(msg.chat.id, msg.text.trim());
+    const text = msg.text ? msg.text.trim() : '';
+    
+    // Solana address detection: 32-44 characters, Base58 format
+    if (text.length >= 32 && text.length <= 44 && /^[1-9A-HJ-NP-Za-km-z]+$/.test(text)) {
+        console.log(`🎯 Detected Solana address: ${text}`);
+        await handleTokenAnalysis(msg.chat.id, text);
     } else {
+        console.log(`📋 Showing subscription info for: ${text}`);
         await showSubscriptionInfo(msg.chat.id);
     }
 });
-
 async function handleTokenAnalysis(chatId, tokenAddress) {
     try {
         console.log(`📊 Analyzing ${tokenAddress}...`);
