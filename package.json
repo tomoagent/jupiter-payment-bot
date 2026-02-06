@@ -1,0 +1,16 @@
+{
+  "name": "jupiter-payment-bot",
+  "version": "1.0.0",
+  "description": "Jupiter Trading Bot - 24/7 Automated Revenue System",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.66.0",
+    "axios": "^1.6.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
